@@ -1,166 +1,143 @@
-# Restaurant-Management-System
-# Restaurant Management System – Project Report
+Restaurant Management System – Project Report
+1. Introduction
 
----
+For this project, I chose a restaurant system because it is something we see in real life almost every day. In many small restaurants, tasks like managing menu items, taking orders, handling customers, and preparing bills are still done manually. From what I observed, this can sometimes cause delays, confusion, or even small mistakes in orders and billing.
 
-## 1. Introduction
+The main aim of this project was to create a simple command-line based Restaurant Management System that can make these tasks easier and more organized. Instead of writing everything on paper, the system allows staff to handle menu items, customer details, orders, and billing digitally.
 
-The chosen organization for this project is a **restaurant**, where daily operations involve managing menu items, customers, orders, and billing. In many small or local restaurants, these tasks are often handled manually, which can lead to inefficiencies, errors, and difficulty in tracking records.
+The system mainly focuses on:
 
-The purpose of this software is to provide a **simple command-line based Restaurant Management System** that digitizes these operations. The system allows staff to manage menu items, register customers, place orders, and generate bills efficiently.
+Managing menu items and checking their availability
+Adding and viewing customer details
+Placing and managing orders
+Generating and completing bills
 
-The scope of the program includes:
+I tried to keep the system simple so that it can be easily used in a small restaurant without needing advanced technical knowledge.
 
-* Managing menu items and their availability
-* Registering and viewing customers
-* Placing and tracking orders
-* Generating and paying bills
+2. System Design
 
-This system is designed to be simple, user-friendly, and suitable for small-scale restaurant operations.
+While designing the system, I used a modular and object-oriented approach. This means the program is divided into different parts, and each part has its own responsibility. This made the project easier to manage and understand during development.
 
----
+Main Classes
+MenuItem
+This class stores details of each item, such as its name, category, price, and availability.
+Customer
+This class is used to store basic customer information like ID, name, and phone number.
+Order
+This represents an order placed by a customer. It can include multiple menu items and also keeps track of whether the order is pending or completed.
+Bill
+This class handles billing. It calculates the total amount for an order and checks whether the payment has been made.
+Relationships
+One customer can place multiple orders
+Each order can contain several menu items
+Each order has one related bill
+Data Management
 
-## 2. System Design
+For storing data, I used:
 
-The system follows a **modular and object-oriented design**, where different components are separated into individual classes and files.
+Dictionaries for temporary storage while the program is running
+File handling (using data_manager.py) to save and load data
 
-### Main Classes
+To keep everything organized, unique IDs are generated using a helper function (next_id). These IDs follow a pattern like:
 
-* **MenuItem**
+M001, M002 for menu items
+C001, C002 for customers
+O001, O002 for orders
+B001, B002 for bills
+3. Implementation Overview
 
-  * Stores item details such as name, category, price, and availability
-* **Customer**
+This project is implemented using basic Python concepts that I learned during my course.
 
-  * Stores customer information (ID, name, phone)
-* **Order**
+Functions
 
-  * Represents a customer order containing multiple menu items
-  * Tracks order status (e.g., pending, served)
-* **Bill**
+Each feature, such as adding a customer or placing an order, is written as a separate function. This makes the code easier to read and reuse.
 
-  * Handles billing for orders, including total calculation and payment status
+Classes and Objects
 
-### Relationships
+I used object-oriented programming to represent real-world things like customers and orders. This helped me organize the code better and keep related data together.
 
-* A **Customer** can have multiple **Orders**
-* An **Order** contains multiple **MenuItems**
-* A **Bill** is generated for one **Order**
+Exception Handling
 
-### Data Management
+I used try-except blocks in several places to handle invalid input. For example, if a user enters the wrong ID or incorrect value, the program shows an error message instead of crashing.
 
-Data is managed using:
+Modularity
 
-* **Dictionaries** (in-memory storage)
-* **File handling (via `data_manager.py`)** to save and load data
+The code is divided into different files:
 
-Unique IDs are generated using a helper function (`next_id`) to ensure consistency across:
+menu.py
+customer.py
+order.py
+bill.py
+data_manager.py
 
-* Menu items (M001, M002, …)
-* Customers (C001, C002, …)
-* Orders (O001, O002, …)
-* Bills (B001, B002, …)
+Each file handles a specific part of the system, which made development more structured.
 
----
+Readability
 
-## 3. Implementation Overview
+While coding, I tried to keep things simple by:
 
-The system is implemented using core Python concepts:
+Using clear function names like add_customer and place_order
+Keeping the menu interface easy to follow
+Writing basic logic instead of overcomplicating things
+4. Testing and Demonstration
 
-### Functions
+To check if the system works properly, I tested it with different types of inputs and situations.
 
-* Each feature (e.g., add customer, place order) is implemented as a separate function
-* Improves readability and reusability
+Example Scenarios
 
-### Classes and Objects
+Placing an Order:
 
-* Object-Oriented Programming is used to model real-world entities
-* Each class encapsulates related data and behavior
+The user selects the option to place an order
+Enters the customer ID
+Adds items using their item IDs
+Confirms the order
 
-### Exception Handling
+Generating a Bill:
 
-* `try-except` blocks are used to handle invalid user input
-* Prevents program crashes and improves user experience
+The user selects an order that is not billed yet
+Can apply a discount if needed
+The system calculates the total and displays the bill
+Error Handling Examples
+If an invalid item ID is entered
+→ [Error] Item ID not found.
+If the user tries to place an empty order
+→ [Error] Cannot place an empty order.
+If discount input is incorrect
+→ A warning is shown and the system continues
+Testing Method
 
-### Modularity
+I tested the system manually by trying different cases, including:
 
-* Code is divided into multiple files:
+No data available
+Invalid IDs
+Wrong numeric inputs
 
-  * `menu.py`, `customer.py`, `order.py`, `bill.py`, `data_manager.py`
-* Each file has a clear responsibility
+This helped me identify and fix small issues.
 
-### Readability
+5. Reflection
+Challenges Faced
 
-* Clear function names (e.g., `add_customer`, `place_order`)
-* Structured menu interface
-* Use of comments and simple logic
+While working on this project, I faced some difficulties:
 
----
+Understanding how to properly connect classes like Order, Customer, and Bill
+Saving data using file handling
+Validating user input without making the code too complicated
+Lessons Learned
 
-## 4. Testing and Demonstration
+From this project, I learned:
 
-The program was tested using multiple scenarios to ensure correctness.
+How modular programming makes code easier to manage
+How object-oriented programming works in real applications
+How to handle user errors and unexpected inputs
+Future Improvements
 
-### Example Usage
+If I continue working on this project, I would like to:
 
-**Placing an Order:**
+Use a database like SQLite instead of file handling
+Create a graphical user interface (GUI)
+Build a web version of the system
+Add login functionality for admin and staff
+Improve how data is stored and managed
+Conclusion
 
-* User selects option to place an order
-* Enters customer ID
-* Adds items by entering item IDs
-* Finalizes order
-
-**Generating a Bill:**
-
-* User selects an unbilled order
-* Optionally applies a discount
-* System calculates total and prints bill
-
-### Error Handling Examples
-
-* Invalid menu item ID:
-  → Displays: `[Error] Item ID not found.`
-
-* Empty order:
-  → Displays: `[Error] Cannot place an empty order.`
-
-* Invalid discount input:
-  → Displays warning and continues without discount
-
-### Testing Approach
-
-* Manual testing with different inputs
-* Tested edge cases such as:
-
-  * Empty data
-  * Invalid IDs
-  * Incorrect numeric inputs
-
----
-
-## 5. Reflection
-
-### Challenges Faced
-
-* Designing relationships between classes (Order, Customer, Bill)
-* Managing data persistence using file handling
-* Ensuring user input validation without making the code too complex
-
-### Lessons Learned
-
-* Importance of modular programming
-* Practical use of Object-Oriented Programming concepts
-* Handling real-world scenarios like invalid input and edge cases
-
-### Future Improvements
-
-* Add database support (e.g., SQLite)
-* Develop a graphical user interface (GUI)
-* Implement a web-based version
-* Add user authentication and roles (admin/staff)
-* Improve data persistence across sessions
-
----
-
-## Conclusion
-
-This project successfully demonstrates a functional Restaurant Management System using Python. It applies key programming concepts such as OOP, modularity, and error handling, while solving a real-world problem in a structured and efficient way.
+This project shows a basic but functional Restaurant Management System built using Python. It helped me apply important concepts like object-oriented programming, modular design, and error handling in a practical way. Overall, it was a useful experience in building a real-world application.
