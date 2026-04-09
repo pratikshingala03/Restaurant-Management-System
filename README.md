@@ -44,6 +44,7 @@ M001, M002 for menu items
 C001, C002 for customers
 O001, O002 for orders
 B001, B002 for bills
+
 3. Implementation Overview
 
 This project is implemented using basic Python concepts that I learned during my course.
@@ -79,6 +80,7 @@ While coding, I tried to keep things simple by:
 Using clear function names like add_customer and place_order
 Keeping the menu interface easy to follow
 Writing basic logic instead of overcomplicating things
+
 4. Testing and Demonstration
 
 To check if the system works properly, I tested it with different types of inputs and situations.
